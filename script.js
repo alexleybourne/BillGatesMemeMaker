@@ -1,11 +1,17 @@
 const loaded = () => {
     console.log('WTF')
+    var ctx = document.getElementById('canvas').getContext('2d');
+    var img = document.getElementById('templateImage');
+    ctx.scale(0.4, 0.4)
+    ctx.drawImage(img, 0, 0); 
+};
+
+const loadSteve = () => {
+    console.log('WTF')
     var ctx = document.getElementById('canvas').getContext('2d'),
     img = new Image();
-    url = window.URL || window.webkitURL,
-    src = url.createObjectURL(f);
     img.src = './images/BillGatesMemeTemplate.png';
-    ctx.drawImage(img, 0, 0);    
+    ctx.drawImage(img, 100, 100);    
 };
 
 const draw = () => {

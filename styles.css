@@ -10,3 +10,10 @@
 #canvas {
     border: 1px solid black;
 }
+
+.hiddenBill {
+    position: absolute;
+    z-index: -20;
+    opacity: 0;
+    width: 600px;
+}
