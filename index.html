@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Bill Gates Code Meme maker created by Alex Leybourne">
     <meta name="robots" content="index,follow">
-    <link rel="stylesheet" href="./style.css">
     <script src="./html2canvas.min.js"></script>
     <title>Bill Gates Code Meme Maker</title>
 </head>
 <body>
     <div class="frame">
         <div id="capture">
-            <div class="main-image"><img width="54px" src="./images/VueIcon.png"></div>
+            <div class="main-image"><img id="second-screen" width="54px" src="./images/VueIcon.png"></div>
             <img class="template-image" src="./images/BillGatesMemeTemplate.png" alt="Bill Gates Meme">
         </div>
     </div>
 
+    <input type="text" id="image-link"><button onclick="updateImage()">Update</button>
     <button onclick="screenShot()">Screenshot</button>
 
     <style>
@@ -59,12 +59,19 @@
 
         function screenShot() {
             html2canvas(document.querySelector("#capture")).then(canvas => {
-                var link = document.createElement('a');
-                link.download = 'Bill Gates Codes.png';
-                link.href = canvas.toDataURL()
-                link.click();
+                document.body.appendChild(canvas)
+                // var link = document.createElement('a');
+                // link.download = 'Bill Gates Codes.png';
+                // link.href = canvas.toDataURL()
+                // link.click();
             });
         };
+
+        function updateImage() {
+            const image = document.getElementById('second-screen');
+            const link = document.getElementById("image-link");
+            image.src = link.value
+        }
         
     </script>
 </body>
