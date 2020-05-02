@@ -1,17 +1,14 @@
 const loaded = () => {
-    console.log('WTF')
     var ctx = document.getElementById('canvas').getContext('2d');
     var img = document.getElementById('templateImage');
     ctx.scale(0.4, 0.4)
     ctx.drawImage(img, 0, 0); 
 };
 
-const loadSteve = () => {
-    console.log('WTF')
-    var ctx = document.getElementById('canvas').getContext('2d'),
-    img = new Image();
-    img.src = './images/BillGatesMemeTemplate.png';
-    ctx.drawImage(img, 100, 100);    
+const loadBill = () => {
+    var ctx = document.getElementById('canvas').getContext('2d');
+    var img = document.getElementById('templateImage');
+    ctx.drawImage(img, 0, 0); 
 };
 
 const draw = () => {
@@ -41,7 +38,8 @@ const  downloadCanvas = () => {
 const clearCanvas = () => {
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, 10000, 10000);
+    loadBill();
 };
 
 const downloadTemplateImage = () => {
