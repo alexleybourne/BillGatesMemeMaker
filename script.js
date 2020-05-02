@@ -15,6 +15,15 @@ const selected = (selection) => {
     console.log(selection);
 };
 
+const loadImage = () => {
+    if(!document.getElementById("upload-image").value){
+        alert("No file selected");
+    } else {
+        clearCanvas();
+        draw();
+    }   
+};
+
 const draw = () => {
     var ctx = document.getElementById('canvas').getContext('2d'),
         img = new Image(),
@@ -39,11 +48,11 @@ const  downloadCanvas = () => {
     link.click();
 };
 
-const clearCanvas = () => {
+const clearCanvas = (val) => {
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
     context.clearRect(0, 0, 10000, 10000);
-    loadBill();
+    val === 'noBill'? null : loadBill();
 };
 
 const downloadTemplateImage = () => {
