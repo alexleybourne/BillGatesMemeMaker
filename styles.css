@@ -22,24 +22,48 @@
     position: absolute;
     cursor: pointer;
     border-radius: 4px;
-    color: white;
+    text-align: center;
     font-weight: bold;
-    font-size: 16px;
-    background-color: rgb(0, 0, 0);
     border: none;
     transition-duration: 0.2s;
 }
 
 .select-button:hover {
-    font-size: 18px;
-    background-color: rgb(0, 0, 0);
+    -webkit-box-shadow: 0px 0px 104px 56px rgb(255, 255, 255);
+    -moz-box-shadow: 0px 0px 104px 56px rgb(255, 255, 255);
+    box-shadow: 0px 0px 104px 56px rgb(255, 255, 255);
+}
+
+.select-button:focus {
+    outline: none;
     -webkit-box-shadow: 0px 0px 104px 56px rgb(255, 255, 255);
     -moz-box-shadow: 0px 0px 104px 56px rgb(255, 255, 255);
     box-shadow: 0px 0px 104px 56px rgb(255, 255, 255);
 }
 
 .main-screen-button {
+    font-size: 17px;
     width: 129px;
     height: 90px;
+    color: white;
+    background-color: black;
     transform: translate(92px, 54px) rotate(3deg);
+}
+
+.second-screen-button {
+    font-size: 14px;
+    width: 65px;
+    height: 50px;
+    color: white;
+    background-color: black;
+    transform: translate(-120px, -195px) rotate(-9deg);
+}
+
+.binder-button {
+    font-size: 18px;
+    width: 109px;
+    height: 57px;
+    color: black;
+    background-color: white;
+    transform: translate(-127px, 84px) rotate(-14deg) skew(43deg, 7deg);
 }
