@@ -11,6 +11,10 @@ const loadBill = () => {
     ctx.drawImage(img, 0, 0); 
 };
 
+const selected = (selection) => {
+    console.log(selection);
+};
+
 const draw = () => {
     var ctx = document.getElementById('canvas').getContext('2d'),
         img = new Image(),
