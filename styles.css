@@ -73,3 +73,13 @@
     background-color: white;
     transform: translate(-117px, 99px) rotate(-14deg) skew(43deg, 7deg);
 }
+
+.hidden {
+    z-index: -10;
+    opacity: 0;
+}
+
+.visible {
+    z-index: 10;
+    opacity: 1;
+}

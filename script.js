@@ -1,13 +1,15 @@
+const sleep = (time) => new Promise(r => setTimeout(r, time))
+
 const loaded = () => {
-    var ctx = document.getElementById('canvas').getContext('2d');
-    var img = document.getElementById('templateImage');
+    const ctx = document.getElementById('canvas').getContext('2d'),
+    img = document.getElementById('templateImage');
     ctx.scale(0.4, 0.4)
     ctx.drawImage(img, 0, 0); 
 };
 
 const loadBill = () => {
-    var ctx = document.getElementById('canvas').getContext('2d');
-    var img = document.getElementById('templateImage');
+    const ctx = document.getElementById('canvas').getContext('2d'),
+    img = document.getElementById('templateImage');
     ctx.drawImage(img, 0, 0); 
 };
 
@@ -24,12 +26,12 @@ const loadImage = () => {
     }   
 };
 
-const draw = () => {
-    var ctx = document.getElementById('canvas').getContext('2d'),
-        img = new Image(),
-        f = document.getElementById("upload-image").files[0],
-        url = window.URL || window.webkitURL,
-        src = url.createObjectURL(f);
+const draw = async() => {
+    const ctx = document.getElementById('canvas').getContext('2d'),
+    img = new Image(),
+    f = document.getElementById("upload-image").files[0],
+    url = window.URL || window.webkitURL,
+    src = url.createObjectURL(f);
 
     img.src = src;
     img.onload = function() {
@@ -37,6 +39,9 @@ const draw = () => {
       url.revokeObjectURL(src);
     }
     document.getElementById("upload-image").value=""
+    await sleep(50);
+    loadBill();
+    buttonsVis('h');
 };
 
 const  downloadCanvas = () => {
@@ -48,11 +53,12 @@ const  downloadCanvas = () => {
     link.click();
 };
 
-const clearCanvas = (val) => {
-    var canvas = document.getElementById('canvas');
-    var context = canvas.getContext('2d');
+const clearCanvas = () => {
+    const canvas = document.getElementById('canvas'),
+    context = canvas.getContext('2d');
     context.clearRect(0, 0, 10000, 10000);
-    val === 'noBill'? null : loadBill();
+    loadBill();
+    buttonsVis('visible')
 };
 
 const downloadTemplateImage = () => {
@@ -61,5 +67,30 @@ const downloadTemplateImage = () => {
     link.download = "BillGatesMemeTemplate.jpg";
     link.href = image;
     link.click();
+};
+
+const buttonsVis = (vis) => {
+
+    // Could use some refactoring
+
+    const mainButton = document.getElementById('main').classList,
+    secondaryButton = document.getElementById('secondary').classList,
+    binderButton = document.getElementById('binder').classList;
+
+    if (vis == 'visible') {
+        mainButton.remove('hidden');
+        mainButton.add('visible');
+        secondaryButton.remove('hidden');
+        secondaryButton.add('visible');
+        binderButton.remove('hidden');
+        binderButton.add('visible');
+    } else {
+        mainButton.remove('visible');
+        mainButton.add('hidden');
+        secondaryButton.remove('visible');
+        secondaryButton.add('hidden');
+        binderButton.remove('visible');
+        binderButton.add('hidden'); 
+    }
 };
 
