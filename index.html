@@ -17,7 +17,9 @@
   <div class="loading" id="loadingScreen">
     <img class="loading-bill" id="loadingBill" src="./images/Bill.png" alt="loader image">
   </div>
-  <img src="./images/BillGatesMemeTemplate.png" class="hidden-bill" id="templateImage">
+  <div class="hidden-bills-cell">
+    <img src="./images/BillGatesMemeTemplate.png" class="hidden-bill" id="templateImage">
+  </div>
   <div class="wrapper">
     <div>
       <div class="select-buttons">
@@ -27,7 +29,8 @@
       </div>
       <canvas id="canvas" width="580" height="430"></canvas>
     </div>
-    <input type='file' name='img' size='65' id='upload-image' /> <button onclick="loadImage()">Load</button><br>
+    <input type='file' name='img' size='65' id='upload-image' /><button onclick="loadImage()">Load</button><br>
+
     <button onclick="downloadCanvas()">Download</button> <br>
     <button onclick="clearCanvas()">Clear</button><br>
     <button onclick="downloadTemplateImage()">Download Template Image</button>
