@@ -4,8 +4,17 @@ const loaded = () => {
     const ctx = document.getElementById('canvas').getContext('2d'),
     img = document.getElementById('templateImage');
     ctx.scale(0.4, 0.4)
-    ctx.drawImage(img, 0, 0); 
+    ctx.drawImage(img, 0, 0);
+    loadingAnimation();
 };
+
+const loadingAnimation = async() => {
+    const bill = document.getElementById('loadingBill').classList
+    bill.add('puff-in-center');
+    await sleep(1000);
+    const screen = document.getElementById('loadingScreen').classList
+    screen.add('hidden');
+}
 
 const loadBill = () => {
     const ctx = document.getElementById('canvas').getContext('2d'),

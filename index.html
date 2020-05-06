@@ -10,26 +10,28 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
   <link rel="manifest" href="./favicon/site.webmanifest">
-  <script src="script.js"></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <title>Bill Gates Code Meme Maker</title>
 </head>
 <body onload="loaded()">
-  <img src="./images/BillGatesMemeTemplate.png" class="hidden-bill" id="templateImage">
-<div class="wrapper">
-  <div>
-    <div class="select-buttons">
-      <button onclick="selected('main')" id="main" class="main-screen-button select-button">Main Screen</button>
-      <button onclick="selected('second')" id="secondary" class="second-screen-button select-button">Second Screen</button>
-      <button onclick="selected('binder')" id="binder" class="binder-button select-button">Binder</button>
-    </div>
-    <canvas id="canvas" width="580" height="430"></canvas>
+  <div class="loading" id="loadingScreen">
+    <img class="loading-bill" id="loadingBill" src="./images/Bill.png" alt="loader image">
   </div>
-  <input type='file' name='img' size='65' id='upload-image' /> <button onclick="loadImage()">Load</button><br>
-  <button onclick="downloadCanvas()">Download</button> <br>
-  <button onclick="clearCanvas()">Clear</button><br>
-  <button onclick="downloadTemplateImage()">Download Template Image</button> 
-</div>
-
+  <img src="./images/BillGatesMemeTemplate.png" class="hidden-bill" id="templateImage">
+  <div class="wrapper">
+    <div>
+      <div class="select-buttons">
+        <button onclick="selected('main')" id="main" class="main-screen-button select-button">Main Screen</button>
+        <button onclick="selected('second')" id="secondary" class="second-screen-button select-button">Second Screen</button>
+        <button onclick="selected('binder')" id="binder" class="binder-button select-button">Binder</button>
+      </div>
+      <canvas id="canvas" width="580" height="430"></canvas>
+    </div>
+    <input type='file' name='img' size='65' id='upload-image' /> <button onclick="loadImage()">Load</button><br>
+    <button onclick="downloadCanvas()">Download</button> <br>
+    <button onclick="clearCanvas()">Clear</button><br>
+    <button onclick="downloadTemplateImage()">Download Template Image</button>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
