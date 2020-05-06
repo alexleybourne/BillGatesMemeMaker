@@ -3,7 +3,11 @@ const sleep = (time) => new Promise(r => setTimeout(r, time))
 const loaded = () => {
     const ctx = document.getElementById('canvas').getContext('2d'),
     img = document.getElementById('templateImage');
-    ctx.scale(0.4, 0.4)
+    ctx.fillStyle = "#0A0A09"; // Black Background fill
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white"; // WhiteBackground fill
+    ctx.fillRect(76, 340, 178, 64);
+    ctx.scale(0.4, 0.4) // shrinks image
     ctx.drawImage(img, 0, 0);
     loadingAnimation();
 };
