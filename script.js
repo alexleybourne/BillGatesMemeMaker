@@ -102,7 +102,7 @@ const loadUploadImage = async (canvas, elementID) => {
 }
 
 
-const  downloadCanvas = () => {
+const  downloadCanvas = async () => {
     const canvas = document.getElementById('canvas'),
     image = canvas.toDataURL('image/jpeg', 1.0),
     link = document.createElement('a')
@@ -110,6 +110,8 @@ const  downloadCanvas = () => {
     link.href = image
     link.click()
     document.getElementById('wink').classList.add('visible')
+    await sleep(200)
+    document.getElementById('wink').classList.remove('visible')
 }
 
 const clearCanvas = async () => {
