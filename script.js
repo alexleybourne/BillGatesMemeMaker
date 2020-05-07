@@ -44,7 +44,9 @@ const draw = async () => {
     const bill = await loadImage("./images/BillGatesMemeTemplateBackground.jpg")
     ctx.drawImage(bill, 0, 0, canvas.width, canvas.height)
 
+    // Put the element ID of each file uploader here
     let ids = ["upload-image-main", "upload-image-second", "upload-image-binder"]
+
     const awaitingImgs = Promise.all(ids.map(id => loadUploadImage(canvas, id)))
     awaitingImgs.then(imgs => imgs.forEach(img => img ? ctx.drawImage(img, 0, 0) : null))
 
@@ -52,6 +54,7 @@ const draw = async () => {
     buttonsVis('h')
 }
 
+// Put the element ID's of each file uploader along with the corresponding corners here
 const getCorners = (pos) => {
     if(pos === "upload-image-main") {
         return {
