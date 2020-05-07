@@ -5,8 +5,42 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.title {
+    text-align: center;
+    transform: translate(0, -250px);
+}
+
 h1 {
-    transform: translate(0, -240px);
+    margin: 5px;
+}
+
+p {
+    margin: 6px;
+}
+
+i {
+    font-weight: bold;
+}
+
+.title img {
+    height: 20px;
+    transform: translate(0, 5px);
+}
+
+a {
+    color: black;
+    font-weight: bold;
+    transition-duration: 0.2s;
+}
+
+a:hover {
+    color: black;
+    margin: 6px;
+}
+
+.credits {
+    font-size: 12px;
+    transform: translate(0, 230px);
 }
 
 #canvas-div {
@@ -118,6 +152,8 @@ h1 {
 #controls {
     display: flex;
     transform: translate(0, 220px);
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .hidden {

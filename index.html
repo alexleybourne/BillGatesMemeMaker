@@ -18,7 +18,11 @@
     <img class="loading-bill" id="loadingBill" src="./images/Bill.png" alt="loader image">
   </div>
   <div class="wrapper">
-    <h1>< Bill Gates Loves to Code /></h1>
+    <div class="title">
+      <h1>< Bill Gates Loves to Code /></h1>
+      <span> <img src="./Icons/Twitter.svg"> tweet your pics with <i>#loveToCode</i></span>
+      <p>Click an item to get started !</p>
+    </div>
     <img id="wink" src="./images/wink.png">
       <div id="select-buttons">
         <button onclick="selected('main')" id="main" class="main-screen-button select-button">Main Screen</button>
@@ -34,9 +38,12 @@
       <input style="display: none" type='file' name='img' size='65' id='upload-secondary' />
       <input style="display: none" type='file' name='img' size='65' id='upload-binder' />
       <button onclick="downloadCanvas()" class="button-class"><img src="./Icons/Download.svg"> Download</button>
-      <button onclick="clearCanvas()" class="button-class"><img src="./Icons/Delete.svg"> Clear</button><br>
+      <button onclick="clearCanvas()" class="button-class"><img src="./Icons/Delete.svg"> Reset</button><br>
       <button onclick="downloadTemplateImage()" class="button-class"><img src="./Icons/Image.svg"> Download Template Image</button>
       <button onclick="" class="button-class"><img src="./Icons/Help.svg"> Help</button>
+    </div>
+    <div class="credits">
+      <p>Created by  <a href="https://github.com/alexleybourne" target="_blank">Alex Leybourne</a> & <a href="https://github.com/NicolasJJensen" target="_blank">Nicolas Jensen</a> 2020</p> 
     </div>
   </div>
   <script src="skew.js"></script>
