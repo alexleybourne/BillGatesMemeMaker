@@ -18,9 +18,10 @@
     <img class="loading-bill" id="loadingBill" src="./images/Bill.png" alt="loader image">
   </div>
   <div class="wrapper">
+    <img id="wink" src="./images/wink.png">
       <div id="select-buttons">
         <button onclick="selected('main')" id="main" class="main-screen-button select-button">Main Screen</button>
-        <button onclick="selected('second')" id="secondary" class="second-screen-button select-button">Second Screen</button>
+        <button onclick="selected('secondary')" id="secondary" class="second-screen-button select-button">Second Screen</button>
         <button onclick="selected('binder')" id="binder" class="binder-button select-button">Binder</button>
       </div>
     <div id="canvas-div">
@@ -28,10 +29,9 @@
     </div>
 
     <div id="controls">
-      <label>Main</label><input type='file' name='img' size='65' id='upload-image-main' />
-      <label>Second</label><input type='file' name='img' size='65' id='upload-image-second' />
-      <label>Binder</label><input type='file' name='img' size='65' id='upload-image-binder' />
-      <button onclick="uploadImage()">Load</button><br>
+      <input style="display: none" type='file' name='img' size='65' id='upload-main' />
+      <input style="display: none" type='file' name='img' size='65' id='upload-secondary' />
+      <input style="display: none" type='file' name='img' size='65' id='upload-binder' />
       <button onclick="downloadCanvas()">Download</button> <br>
       <button onclick="clearCanvas()">Clear</button><br>
       <button onclick="downloadTemplateImage()">Download Template Image</button>

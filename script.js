@@ -6,21 +6,25 @@ async function setup() {
     memeURL = "./images/BillGatesMemeTemplate.png"
     memeName = "BillGatesTemplate"
     backgroundURL = "./images/BillGatesMemeTemplateBackground.jpg"
-    ids = ["upload-image-main", "upload-image-second", "upload-image-binder"]
+    ids = ["main", "secondary", "binder"]
     canvas = document.getElementById('canvas'),
     ctx = canvas.getContext('2d')
+
+    ids.forEach(id => {
+        document.getElementById(`upload-${id}`).addEventListener('change', uploadImage)
+    })
 }
 
 // Put the element ID's of each file uploader along with the corresponding corners here
 const getCorners = (pos) => {
-    if(pos === "upload-image-main") {
+    if(pos === "main") {
         return {
             topLeft: [785, 723],
             topRight: [1133, 743],
             bottomLeft: [786, 974],
             bottomRight: [1126, 990]
         }
-    } else if (pos === "upload-image-second") {
+    } else if (pos === "secondary") {
         return {
             topLeft: [332, 179],
             topRight: [481, 170],
@@ -56,15 +60,16 @@ const loadingAnimation = async() => {
 }
 
 const selected = (selection) => {
-    console.log(selection)
+    let input = document.getElementById(`upload-${selection}`)
+    input.click()
 }
 
 const uploadImage = () => {
-    if(!document.getElementById("upload-image-main").value && !document.getElementById("upload-image-second").value && !document.getElementById("upload-image-binder").value){
+    if(!document.getElementById("upload-main").value && !document.getElementById("upload-second").value && !document.getElementById("upload-binder").value){
         alert("No file selected")
     } else {
         draw()
-    }   
+    }
 }
 
 const draw = async () => {
@@ -77,7 +82,7 @@ const draw = async () => {
     const awaitingImgs = Promise.all(ids.map(id => loadUploadImage(canvas, id)))
 
     // Then draw all at once
-    buttonsVis('h')
+    updateButtonVis()
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
     await awaitingImgs.then(imgs => imgs.forEach(img => img ? ctx.drawImage(img, 0, 0) : null))
@@ -85,7 +90,7 @@ const draw = async () => {
 }
 
 const loadUploadImage = async (canvas, elementID) => {
-    const element = document.getElementById(elementID)
+    const element = document.getElementById(`upload-${elementID}`)
     if(!element.value) return
     const f = element.files[0]
     const url = window.URL || window.webkitURL
@@ -104,14 +109,15 @@ const  downloadCanvas = () => {
     link.download = "ImageTest!.jpg"
     link.href = image
     link.click()
+    document.getElementById('wink').classList.add('visible')
 }
 
 const clearCanvas = async () => {
     ids.forEach(id => {
-        document.getElementById(id).value = null
+        document.getElementById(`upload-${id}`).value = null
     })
     await draw()
-    buttonsVis('visible')
+    updateButtonVis()
 }
 
 const downloadTemplateImage = () => {
@@ -121,14 +127,17 @@ const downloadTemplateImage = () => {
     link.click()
 }
 
-const buttonsVis = (vis) => {
-    const mainButton = document.getElementById('select-buttons').classList
-    if (vis == 'visible') {
-        mainButton.remove('hidden')
-        mainButton.add('visible')
-    } else {
-        mainButton.remove('visible')
-        mainButton.add('hidden')
-    }
+const updateButtonVis = () => {
+    ids.forEach(id => {
+        let button = document.getElementById(id)
+        let upload = document.getElementById(`upload-${id}`)
+        if(upload.value){
+            button.classList.remove('visible')
+            button.classList.add('hidden')
+        } else {
+            button.classList.remove('hidden')
+            button.classList.add('visible')
+        }
+    })
 }
 
