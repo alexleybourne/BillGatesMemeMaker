@@ -4,6 +4,17 @@ html, body {
     overflow-x: hidden;
 }
 
+.controls {
+    position: absolute;
+    top: 684px;
+}
+
+#canvas-div {
+    transform: scale(0.4);
+    overflow: hidden;
+    position: absolute;
+}
+
 
 .loading {
     overflow: hidden;
@@ -36,22 +47,6 @@ html, body {
     align-items: center;
 }
 
-#canvas {
-    border: 1px solid black;
-}
-
-.hidden-bills-cell {
-    position: absolute;
-    overflow: hidden;
-}
-
-.hidden-bill {
-    position: absolute;
-    z-index: -20;
-    opacity: 0;
-    width: 600px;
-}
-
 .select-button {
     position: absolute;
     cursor: pointer;
@@ -78,7 +73,7 @@ html, body {
 .select-buttons {
     position: absolute;
     z-index: 10;
-    transform: translate(228px, 245px);
+    transform: translate(-65px, 27px);
 }
 
 .main-screen-button {
@@ -106,6 +101,10 @@ html, body {
     color: black;
     background-color: white;
     transform: translate(-117px, 99px) rotate(-14deg) skew(43deg, 7deg);
+}
+
+#controls {
+    position: absolute;
 }
 
 .hidden {

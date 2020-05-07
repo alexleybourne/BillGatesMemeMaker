@@ -13,28 +13,31 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   <title>Bill Gates Code Meme Maker</title>
 </head>
-<body onload="loaded()">
+<body>
   <div class="loading" id="loadingScreen">
     <img class="loading-bill" id="loadingBill" src="./images/Bill.png" alt="loader image">
   </div>
-  <div class="hidden-bills-cell">
-    <img src="./images/BillGatesMemeTemplate.png" class="hidden-bill" id="templateImage">
-  </div>
   <div class="wrapper">
-    <div>
       <div class="select-buttons">
         <button onclick="selected('main')" id="main" class="main-screen-button select-button">Main Screen</button>
         <button onclick="selected('second')" id="secondary" class="second-screen-button select-button">Second Screen</button>
         <button onclick="selected('binder')" id="binder" class="binder-button select-button">Binder</button>
       </div>
-      <canvas id="canvas" width="580" height="430"></canvas>
+    <div id="canvas-div">
+      <canvas id="canvas" width="1460" height="1080"></canvas>
     </div>
-    <input type='file' name='img' size='65' id='upload-image' /><button onclick="loadImage()">Load</button><br>
 
-    <button onclick="downloadCanvas()">Download</button> <br>
-    <button onclick="clearCanvas()">Clear</button><br>
-    <button onclick="downloadTemplateImage()">Download Template Image</button>
+    <div class="controls">
+      <label>Main</label><input type='file' name='img' size='65' id='upload-image-main' />
+      <label>Second</label><input type='file' name='img' size='65' id='upload-image-second' />
+      <label>Binder</label><input type='file' name='img' size='65' id='upload-image-binder' />
+      <button onclick="uploadImage()">Load</button><br>
+      <button onclick="downloadCanvas()">Download</button> <br>
+      <button onclick="clearCanvas()">Clear</button><br>
+      <button onclick="downloadTemplateImage()">Download Template Image</button>
+    </div>
   </div>
+  <script src="skew.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
