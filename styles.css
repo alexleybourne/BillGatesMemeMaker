@@ -10,6 +10,10 @@ html, body {
     position: absolute;
 }
 
+#canvas {
+    border-radius: 10px;
+}
+
 #wink {
     opacity: 0;
     position: absolute;
@@ -106,8 +110,7 @@ html, body {
 }
 
 #controls {
-    position: absolute;
-    top: 684px;
+    transform: translate(0, 260px);
 }
 
 .hidden {
@@ -120,6 +123,26 @@ html, body {
     z-index: 10;
     opacity: 1!important;
     pointer-events: all;
+}
+
+button img {
+    height: 20px;
+    filter: invert(1);
+    transform: translate(0px, 2px);
+}
+
+.download-button {
+    background-color: DodgerBlue;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.download-button:hover {
+    background-color: rgb(38, 139, 240);
 }
 
 .puff-in-center {
