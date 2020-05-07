@@ -1,57 +1,14 @@
 const sleep = (time) => new Promise(r => setTimeout(r, time))
 
-// ctx.transform(horizontalScale, horizontalSkew, verticalSkew, verticalSkew, xPos, yPos)
+var memeURL, memeName, background, meme, ids, canvas, ctx
 
-window.addEventListener("DOMContentLoaded", async () => {
-    
-    const canvas = document.getElementById('canvas')
+async function setup() {
+    memeURL = "./images/BillGatesMemeTemplate.png"
+    memeName = "BillGatesTemplate"
+    backgroundURL = "./images/BillGatesMemeTemplateBackground.jpg"
+    ids = ["upload-image-main", "upload-image-second", "upload-image-binder"]
+    canvas = document.getElementById('canvas'),
     ctx = canvas.getContext('2d')
-    loadingAnimation()
-    loadBill(ctx)
-    // canvas.addEventListener('mousemove', (e) => console.log(e.offsetX, e.offsetY))
-})
-
-const loadingAnimation = async() => {
-    const bill = document.getElementById('loadingBill').classList
-    bill.add('puff-in-center')
-    await sleep(1000)
-    const screen = document.getElementById('loadingScreen').classList
-    screen.add('hidden')
-}
-
-const loadBill = async (ctx) => {
-    const img = await loadImage("./images/BillGatesMemeTemplate.png")
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-}
-
-const selected = (selection) => {
-    console.log(selection)
-}
-
-const uploadImage = () => {
-    if(!document.getElementById("upload-image-main").value && !document.getElementById("upload-image-second").value && !document.getElementById("upload-image-binder").value){
-        alert("No file selected")
-    } else {
-        clearCanvas()
-        draw()
-    }   
-}
-
-const draw = async () => {
-    const canvas = document.getElementById('canvas'),
-    ctx = canvas.getContext('2d')
-
-    const bill = await loadImage("./images/BillGatesMemeTemplateBackground.jpg")
-    ctx.drawImage(bill, 0, 0, canvas.width, canvas.height)
-
-    // Put the element ID of each file uploader here
-    let ids = ["upload-image-main", "upload-image-second", "upload-image-binder"]
-
-    const awaitingImgs = Promise.all(ids.map(id => loadUploadImage(canvas, id)))
-    awaitingImgs.then(imgs => imgs.forEach(img => img ? ctx.drawImage(img, 0, 0) : null))
-
-    loadBill(ctx)
-    buttonsVis('h')
 }
 
 // Put the element ID's of each file uploader along with the corresponding corners here
@@ -80,6 +37,53 @@ const getCorners = (pos) => {
     }
 }
 
+window.addEventListener("DOMContentLoaded", async () => {
+
+    await setup()
+    
+    loadingAnimation()
+    let meme = await loadImage(memeURL)
+    ctx.drawImage(meme, 0, 0, canvas.width, canvas.height)
+    // canvas.addEventListener('mousemove', (e) => console.log(e.offsetX, e.offsetY))
+})
+
+const loadingAnimation = async() => {
+    const bill = document.getElementById('loadingBill').classList
+    bill.add('puff-in-center')
+    await sleep(1000)
+    const screen = document.getElementById('loadingScreen').classList
+    screen.add('hidden')
+}
+
+const selected = (selection) => {
+    console.log(selection)
+}
+
+const uploadImage = () => {
+    if(!document.getElementById("upload-image-main").value && !document.getElementById("upload-image-second").value && !document.getElementById("upload-image-binder").value){
+        alert("No file selected")
+    } else {
+        draw()
+    }   
+}
+
+const draw = async () => {
+    const canvas = document.getElementById('canvas'),
+    ctx = canvas.getContext('2d')
+
+    // Load all images first
+    let background = await loadImage(backgroundURL)
+    let meme = await loadImage(memeURL)
+    const awaitingImgs = Promise.all(ids.map(id => loadUploadImage(canvas, id)))
+
+    // Then draw all at once
+    buttonsVis('h')
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
+    await awaitingImgs.then(imgs => imgs.forEach(img => img ? ctx.drawImage(img, 0, 0) : null))
+    ctx.drawImage(meme, 0, 0, canvas.width, canvas.height)
+}
+
 const loadUploadImage = async (canvas, elementID) => {
     const element = document.getElementById(elementID)
     if(!element.value) return
@@ -88,7 +92,7 @@ const loadUploadImage = async (canvas, elementID) => {
     const src = url.createObjectURL(f)
     const img = await loadImage(src)
     const corners = getCorners(elementID)
-    // url.revokeObjectURL(src)
+    url.revokeObjectURL(src)
     return skewImage(canvas, img, corners)
 }
 
@@ -103,14 +107,17 @@ const  downloadCanvas = () => {
 }
 
 const clearCanvas = async () => {
-    buttonsVis('h')
+    ids.forEach(id => {
+        document.getElementById(id).value = null
+    })
+    await draw()
+    buttonsVis('visible')
 }
 
 const downloadTemplateImage = () => {
-    const image = './images/BillGatesMemeTemplate.png',
-    link = document.createElement('a')
-    link.download = "BillGatesMemeTemplate.png"
-    link.href = image
+    const link = document.createElement('a')
+    link.download = memeName
+    link.href = memeURL
     link.click()
 }
 
