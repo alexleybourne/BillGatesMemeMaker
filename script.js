@@ -5,9 +5,10 @@ const sleep = (time) => new Promise(r => setTimeout(r, time))
 window.addEventListener("DOMContentLoaded", async () => {
     
     const canvas = document.getElementById('canvas')
+    ctx = canvas.getContext('2d')
     loadingAnimation()
-    loadBill()
-    canvas.addEventListener('mousemove', (e) => console.log(e.offsetX, e.offsetY))
+    loadBill(ctx)
+    // canvas.addEventListener('mousemove', (e) => console.log(e.offsetX, e.offsetY))
 })
 
 const loadingAnimation = async() => {
@@ -18,9 +19,8 @@ const loadingAnimation = async() => {
     screen.add('hidden')
 }
 
-const loadBill = async () => {
-    const ctx = document.getElementById('canvas').getContext('2d'),
-    img = await loadImage("./images/BillGatesMemeTemplate.png")
+const loadBill = async (ctx) => {
+    const img = await loadImage("./images/BillGatesMemeTemplate.png")
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
 }
 
@@ -41,43 +41,14 @@ const draw = async () => {
     const canvas = document.getElementById('canvas'),
     ctx = canvas.getContext('2d')
 
-    ctx.fillStyle = "#0A0A09" // Black Background fill
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
-    ctx.fillStyle = "white" // WhiteBackground fill
-    ctx.fillRect(76, 340, 178, 64)
+    const bill = await loadImage("./images/BillGatesMemeTemplateBackground.jpg")
+    ctx.drawImage(bill, 0, 0, canvas.width, canvas.height)
 
-    if(document.getElementById("upload-image-main").value) { loadUploadImage(canvas, ctx, "upload-image-main") }
-    // if(document.getElementById("upload-image-second").value) { await loadUploadImage(canvas, "upload-image-second") }
-    // if(document.getElementById("upload-image-binder").value) { await loadUploadImage(canvas, "upload-image-binder") }
+    let ids = ["upload-image-main", "upload-image-second", "upload-image-binder"]
+    const awaitingImgs = Promise.all(ids.map(id => loadUploadImage(canvas, id)))
+    awaitingImgs.then(imgs => imgs.forEach(img => img ? ctx.drawImage(img, 0, 0) : null))
 
-    // const f = document.getElementById("upload-image").files[0]
-    // const url = window.URL || window.webkitURL
-    // const src = url.createObjectURL(f)
-    // const img = await loadImage(src)
-    // const binderCorners = {
-    //     topLeft: [195, 880],
-    //     topRight: [473, 856],
-    //     bottomLeft: [358, 1016],
-    //     bottomRight: [636, 974]
-    // }
-    // const secondScreenCorners = {
-    //     topLeft: [332, 179],
-    //     topRight: [521, 147],
-    //     bottomLeft: [358, 314],
-    //     bottomRight: [528, 282]
-    // }
-    // const mainScreenCorners = {
-    //     topLeft: [785, 723],
-    //     topRight: [1133, 743],
-    //     bottomLeft: [786, 974],
-    //     bottomRight: [1126, 990]
-    // }
-    // const skewedImg = skewImage(canvas, img, binderCorners)
-    // ctx.drawImage(skewedImg, 0, 0)
-    // url.revokeObjectURL(src)
-
-    await sleep(50)
-    loadBill()
+    loadBill(ctx)
     buttonsVis('h')
 }
 
@@ -92,9 +63,9 @@ const getCorners = (pos) => {
     } else if (pos === "upload-image-second") {
         return {
             topLeft: [332, 179],
-            topRight: [521, 147],
+            topRight: [481, 170],
             bottomLeft: [358, 314],
-            bottomRight: [528, 282]
+            bottomRight: [496, 277]
         }
     } else {
         return {
@@ -106,15 +77,16 @@ const getCorners = (pos) => {
     }
 }
 
-const loadUploadImage = async (canvas, ctx, elementID) => {
-    const f = document.getElementById(elementID).files[0]
+const loadUploadImage = async (canvas, elementID) => {
+    const element = document.getElementById(elementID)
+    if(!element.value) return
+    const f = element.files[0]
     const url = window.URL || window.webkitURL
     const src = url.createObjectURL(f)
     const img = await loadImage(src)
     const corners = getCorners(elementID)
-    const skewedImg = skewImage(canvas, img, corners)
-    ctx.drawImage(skewedImg, 0, 0)
-    url.revokeObjectURL(src)
+    // url.revokeObjectURL(src)
+    return skewImage(canvas, img, corners)
 }
 
 
@@ -127,12 +99,8 @@ const  downloadCanvas = () => {
     link.click()
 }
 
-const clearCanvas = async() => {
-    const ctx = document.getElementById('canvas').getContext('2d'),
-    img = await loadImage("./images/BillGatesMemeTemplateBackground.jpg")
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-    loadBill()
-    buttonsVis('visible')
+const clearCanvas = async () => {
+    buttonsVis('h')
 }
 
 const downloadTemplateImage = () => {
@@ -144,27 +112,13 @@ const downloadTemplateImage = () => {
 }
 
 const buttonsVis = (vis) => {
-
-    // Could use some refactoring
-
-    const mainButton = document.getElementById('main').classList,
-    secondaryButton = document.getElementById('secondary').classList,
-    binderButton = document.getElementById('binder').classList
-
+    const mainButton = document.getElementById('select-buttons').classList
     if (vis == 'visible') {
         mainButton.remove('hidden')
         mainButton.add('visible')
-        secondaryButton.remove('hidden')
-        secondaryButton.add('visible')
-        binderButton.remove('hidden')
-        binderButton.add('visible')
     } else {
         mainButton.remove('visible')
         mainButton.add('hidden')
-        secondaryButton.remove('visible')
-        secondaryButton.add('hidden')
-        binderButton.remove('visible')
-        binderButton.add('hidden') 
     }
 }
 
