@@ -126,6 +126,8 @@ html, body {
     pointer-events: all;
 }
 
+button:focus {outline:0;}
+
 .button-class {
     background-color: white;
     border-radius: 50px;
@@ -154,6 +156,7 @@ button img {
 
 .button-class:hover > img {
     filter: invert(1);
+    transform: scale(1.2) translate(0, 1.5px);
 }
 
 .puff-in-center {
