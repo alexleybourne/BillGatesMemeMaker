@@ -110,6 +110,7 @@ html, body {
 }
 
 #controls {
+    display: flex;
     transform: translate(0, 260px);
 }
 
@@ -125,24 +126,28 @@ html, body {
     pointer-events: all;
 }
 
+.button-class {
+    background-color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    transition-duration: 0.4s;
+    margin: 4px;
+}
+
 button img {
-    height: 20px;
+    height: 14px;
     filter: invert(1);
     transform: translate(0px, 2px);
+    margin-right: 4px;
 }
 
-.download-button {
-    background-color: DodgerBlue;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-.download-button:hover {
-    background-color: rgb(38, 139, 240);
+.button-class:hover {
+    background-color: rgb(63, 63, 63);
 }
 
 .puff-in-center {
