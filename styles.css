@@ -127,27 +127,33 @@ html, body {
 }
 
 .button-class {
-    background-color: rgb(0, 0, 0);
-    border: none;
+    background-color: white;
     border-radius: 50px;
-    color: white;
+    color: black;
     padding: 6px 10px;
     cursor: pointer;
     font-size: 14px;
     display: flex;
     transition-duration: 0.4s;
     margin: 4px;
+    border: 1px black solid;
 }
 
 button img {
     height: 14px;
-    filter: invert(1);
+    filter: invert(0);
     transform: translate(0px, 2px);
+    transition-duration: 0.4s;
     margin-right: 4px;
 }
 
 .button-class:hover {
-    background-color: rgb(63, 63, 63);
+    background-color: black;
+    color: white;
+}
+
+.button-class:hover > img {
+    filter: invert(1);
 }
 
 .puff-in-center {
