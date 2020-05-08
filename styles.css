@@ -2,6 +2,11 @@ html, body {
     margin: 0;
     max-width: 100%;
     overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    transform: translate(0, -240px);
 }
 
 #canvas-div {
@@ -12,6 +17,7 @@ html, body {
 
 #canvas {
     border-radius: 10px;
+    border: 10px solid black;
 }
 
 #wink {
@@ -111,7 +117,7 @@ html, body {
 
 #controls {
     display: flex;
-    transform: translate(0, 260px);
+    transform: translate(0, 220px);
 }
 
 .hidden {
@@ -142,9 +148,9 @@ button:focus {outline:0;}
 }
 
 button img {
-    height: 14px;
+    height: 16px;
     filter: invert(0);
-    transform: translate(0px, 2px);
+    transform: translate(0px, 1px);
     transition-duration: 0.4s;
     margin-right: 4px;
 }
@@ -156,7 +162,7 @@ button img {
 
 .button-class:hover > img {
     filter: invert(1);
-    transform: scale(1.2) translate(0, 1.5px);
+    transform: scale(1.2) translate(0, 0.5px);
 }
 
 .puff-in-center {
