@@ -229,11 +229,21 @@ button img {
     transform: scale(1.2) translate(0, 0.5px);
 }
 
-.help-bubble {
+.bubble-visible {
     z-index: 69;
-    position: absolute;
+    opacity: 1!important;
+    pointer-events: all;
+    margin-top: 0px !important;
 }
 
+.help-bubble {
+    opacity: 0;
+    z-index: 69;
+    position: absolute;
+    transition-duration: 0.4s;
+    offset: none;
+    margin-top: 10px;
+}
 
 .help-bubble > img {
     opacity: 1;

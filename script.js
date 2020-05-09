@@ -149,7 +149,15 @@ const help = async() => {
     helpVal = !helpVal
     helpVal? helpButton.classList.add('button-selected') : helpButton.classList.remove('button-selected')
     if (helpVal) {
-        document.getElementById().classList.add('visible')
+        document.getElementById('bubble1').classList.add('bubble-visible')
+        await sleep(200)
+        document.getElementById('bubble2').classList.add('bubble-visible')
+        await sleep(200)
+        document.getElementById('bubble3').classList.add('bubble-visible')
+    } else {
+        document.getElementById('bubble1').classList.remove('bubble-visible')
+        document.getElementById('bubble2').classList.remove('bubble-visible')
+        document.getElementById('bubble3').classList.remove('bubble-visible')
     }
 }
 
