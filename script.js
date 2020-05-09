@@ -1,6 +1,7 @@
 const sleep = (time) => new Promise(r => setTimeout(r, time))
 
 var memeURL, memeName, background, meme, ids, canvas, ctx
+var helpVal = false
 
 async function setup() {
     memeURL = "./images/BillGatesMemeTemplate.png"
@@ -141,5 +142,11 @@ const updateButtonVis = () => {
             button.classList.add('visible')
         }
     })
+}
+
+const help = () => {
+    helpButton = document.getElementById('helpButton')
+    helpVal = !helpVal
+    helpVal? helpButton.classList.add('button-selected') : helpButton.classList.remove('button-selected')
 }
 
