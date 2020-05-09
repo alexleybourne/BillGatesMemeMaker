@@ -144,9 +144,12 @@ const updateButtonVis = () => {
     })
 }
 
-const help = () => {
+const help = async() => {
     helpButton = document.getElementById('helpButton')
     helpVal = !helpVal
     helpVal? helpButton.classList.add('button-selected') : helpButton.classList.remove('button-selected')
+    if (helpVal) {
+        document.getElementById().classList.add('visible')
+    }
 }
 

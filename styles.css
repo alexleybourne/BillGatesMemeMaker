@@ -181,7 +181,7 @@ span a {
 }
 
 .visible {
-    z-index: 10;
+    z-index: 69;
     opacity: 1!important;
     pointer-events: all;
 }
@@ -229,12 +229,18 @@ button img {
     transform: scale(1.2) translate(0, 0.5px);
 }
 
-
-
 .help-bubble {
-    position: absolute;
     z-index: 69;
+    position: absolute;
+}
+
+
+.help-bubble > img {
+    opacity: 1;
+    z-index: 69;
+    position: absolute;
     height: 64px;
+    transition-duration: 0.2s;
 }
 
 .bubble-2 {
@@ -246,6 +252,7 @@ button img {
 }
 
 .help-text {
+    opacity: 1;
     position: absolute;
     z-index: 69;
     width: 200px;
@@ -256,12 +263,12 @@ button img {
 
 .text-2 {
     width: 190px;
-    transform: translate(-224px, 72px);
+    transform: translate(7px, 6px);
 }
 
 .text-3 {
     width: 180px;
-    transform: translate(-218px, -206px);
+    transform: translate(9px, 6px);
 }
 
 .puff-in-center {
