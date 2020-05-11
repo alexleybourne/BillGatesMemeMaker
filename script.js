@@ -52,6 +52,21 @@ window.addEventListener("DOMContentLoaded", async () => {
     // canvas.addEventListener('mousemove', (e) => console.log(e.offsetX, e.offsetY))
 })
 
+window.addEventListener('resize', () => {
+     // Resizes the canvas for mobile
+    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    if (vw < 700) { 
+        console.log(vw)
+        console.log('yeeted')
+        document.getElementById('canvas-items').style.transform = 'scale(0.6)'
+        document.getElementById('title').style.transform = 'translate(0, -160px)'
+        document.getElementById('controls').style.transform = 'translate(0, 160px)'
+        document.getElementById('credits').style.transform = 'translate(0, 170px)'
+    } else {
+        location.reload()
+    }
+})
+
 const loadingAnimation = async() => {
     const bill = document.getElementById('loadingBill').classList
     bill.add('puff-in-center')

@@ -18,34 +18,36 @@
     <img class="loading-bill" id="loadingBill" src="./images/Bill.png" alt="loader image">
   </div>
   <div class="wrapper">
-    <div class="title">
+    <div id="title">
       <h1>< Bill Gates Loves to Code /></h1>
       <span> <img src="./Icons/Twitter.svg"> Tweet your pics with <i>#loveToCode</i></span>
       <p>Click the computer screen to get started !</p>
     </div>
-    <div id="helpBubbles">
-      <div class="help-bubble" id="bubble1">
-        <img src="./images/Bubble.svg">
-        <span class="help-text">Your favorite Coding Language</span>
+    <div id="canvas-items">
+      <div id="helpBubbles">
+        <div class="help-bubble" id="bubble1">
+          <img src="./images/Bubble.svg">
+          <span class="help-text">Your favorite Coding Language</span>
+        </div>
+        <div class="help-bubble bubble-2" id="bubble2">
+          <img src="./images/Bubble.svg">
+          <span class="help-text text-2">Language you are learning or want to learn</span>
+        </div>
+        <div class="help-bubble bubble-3" id="bubble3">
+          <img src="./images/Bubble.svg">
+          <span class="help-text text-3">Your second favorite Coding Language</span>
+        </div>
       </div>
-      <div class="help-bubble bubble-2" id="bubble2">
-        <img src="./images/Bubble.svg">
-        <span class="help-text text-2">Language you are learning or want to learn</span>
+      <p id="wink-text">* wink *</p>
+      <img id="wink" src="./images/wink.png">
+        <div id="select-buttons">
+          <button onclick="selected('main')" id="main" class="main-screen-button select-button">Main Screen</button>
+          <button onclick="selected('secondary')" id="secondary" class="second-screen-button select-button">Second Screen</button>
+          <button onclick="selected('binder')" id="binder" class="binder-button select-button">Binder</button>
+        </div>
+      <div id="canvas-div">
+        <canvas id="canvas" width="1460" height="1080"></canvas>
       </div>
-      <div class="help-bubble bubble-3" id="bubble3">
-        <img src="./images/Bubble.svg">
-        <span class="help-text text-3">Your second favorite Coding Language</span>
-      </div>
-    </div>
-    <p id="wink-text">* wink *</p>
-    <img id="wink" src="./images/wink.png">
-      <div id="select-buttons">
-        <button onclick="selected('main')" id="main" class="main-screen-button select-button">Main Screen</button>
-        <button onclick="selected('secondary')" id="secondary" class="second-screen-button select-button">Second Screen</button>
-        <button onclick="selected('binder')" id="binder" class="binder-button select-button">Binder</button>
-      </div>
-    <div id="canvas-div">
-      <canvas id="canvas" width="1460" height="1080"></canvas>
     </div>
 
     <div id="controls">
@@ -57,7 +59,7 @@
       <button onclick="downloadTemplateImage()" class="button-class"><img src="./Icons/Image.svg"> Download Template Image</button>
       <button onclick="help()" id="helpButton" class="button-class"><img src="./Icons/Help.svg"> Help</button>
     </div>
-    <div class="credits">
+    <div id="credits">
       <span>Tag <a href="https://twitter.com/alexleybourne" target="_blank">@AlexLeybourne</a> when you post on <img src="./Icons/Twitter.svg"> Twitter.</span>
       <p>Created by  <a href="https://github.com/alexleybourne" target="_blank">Alex Leybourne</a> & <a href="https://github.com/NicolasJJensen" target="_blank">Nicolas Jensen</a> 2020.</p>
     </div>
