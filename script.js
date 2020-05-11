@@ -45,27 +45,29 @@ const getCorners = (pos) => {
 window.addEventListener("DOMContentLoaded", async () => {
 
     await setup()
-    
+    scaleCheck()
     loadingAnimation()
     let meme = await loadImage(memeURL)
     ctx.drawImage(meme, 0, 0, canvas.width, canvas.height)
     // canvas.addEventListener('mousemove', (e) => console.log(e.offsetX, e.offsetY))
 })
 
-window.addEventListener('resize', () => {
+const scaleCheck = () => {
      // Resizes the canvas for mobile
-    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+
     if (vw < 700) { 
-        console.log(vw)
-        console.log('yeeted')
         document.getElementById('canvas-items').style.transform = 'scale(0.6)'
         document.getElementById('title').style.transform = 'translate(0, -160px)'
         document.getElementById('controls').style.transform = 'translate(0, 160px)'
         document.getElementById('credits').style.transform = 'translate(0, 170px)'
-    } else {
-        location.reload()
     }
-})
+    if (vh < 700) {
+        document.getElementById('title').style.marginTop = '200px'
+        document.getElementById('credits').style.marginBottom = '50px'
+    }
+}
 
 const loadingAnimation = async() => {
     const bill = document.getElementById('loadingBill').classList
