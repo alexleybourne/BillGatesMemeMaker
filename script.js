@@ -111,8 +111,11 @@ const  downloadCanvas = async () => {
     link.href = image
     link.click()
     document.getElementById('wink').classList.add('visible')
+    document.getElementById('wink-text').classList.add('visible')
     await sleep(200)
     document.getElementById('wink').classList.remove('visible')
+    await sleep(100)
+    document.getElementById('wink-text').classList.remove('visible')
 }
 
 const clearCanvas = async () => {
