@@ -334,6 +334,11 @@ button img {
     transition-duration: 0.4s;
 }
 
+#GeneratedImage {
+    height: 80%;
+    max-width: 90%;
+}
+
 .close-icon:hover {
     filter: invert(0);
     background: none;

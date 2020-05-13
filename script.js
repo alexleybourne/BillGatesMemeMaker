@@ -2,6 +2,7 @@ const sleep = (time) => new Promise(r => setTimeout(r, time))
 
 var memeURL, memeName, background, meme, ids, canvas, ctx
 var helpVal = false
+const fileName = "Bill-Gates-Coding-Meme.jpg"
 
 async function setup() {
     memeURL = "./images/BillGatesMemeTemplate.png"
@@ -62,13 +63,29 @@ const scaleCheck = () => {
 
 window.addEventListener('resize', scaleCheck)
 
+const generate = () => {
+    const canvas = document.getElementById('canvas'),
+    image = canvas.toDataURL('image/jpeg', 1.0)
+    document.getElementById('GeneratedImage').src = image
+    openPopUp()
+}
+
+const  downloadCanvas = () => {
+    const canvas = document.getElementById('canvas'),
+    image = canvas.toDataURL('image/jpeg', 1.0),
+    link = document.createElement('a')
+    link.download = fileName
+    link.href = image
+    link.click()
+    closePopUp()
+}
+
 const openPopUp = async() => {
     // Wink Animation
     document.getElementById('wink').classList.add('visible')
     document.getElementById('wink-text').classList.add('visible')
-    await sleep(200)
+    await sleep(300)
     document.getElementById('wink').classList.remove('visible')
-    await sleep(100)
     document.getElementById('wink-text').classList.remove('visible')
     await sleep(100)
     // Opens Popup
@@ -93,7 +110,8 @@ const selected = (selection) => {
 }
 
 const uploadImage = () => {
-    if(!document.getElementById("upload-main").value && !document.getElementById("upload-second").value && !document.getElementById("upload-binder").value){
+    uploads = ids.map(id => document.getElementById(`upload-${id}`))
+    if(uploads.includes(null) || uploads.some(el => !el.value)){
         alert("No file selected")
     } else {
         draw()
@@ -127,17 +145,6 @@ const loadUploadImage = async (canvas, elementID) => {
     const corners = getCorners(elementID)
     url.revokeObjectURL(src)
     return skewImage(canvas, img, corners)
-}
-
-
-const  downloadCanvas = () => {
-    const canvas = document.getElementById('canvas'),
-    image = canvas.toDataURL('image/jpeg', 1.0),
-    link = document.createElement('a')
-    link.download = "ImageTest!.jpg"
-    link.href = image
-    link.click()
-    closePopUp()
 }
 
 const clearCanvas = async () => {
