@@ -62,6 +62,7 @@ const scaleCheck = () => {
         document.getElementById('title').style.transform = 'translate(0, -160px)'
         document.getElementById('controls').style.transform = 'translate(0, 160px)'
         document.getElementById('credits').style.transform = 'translate(0, 170px)'
+        document.getElementById('imageDownloadButton').classList.add('hidden');
     }
     if (vh < 700) {
         document.getElementById('title').style.marginTop = '200px'

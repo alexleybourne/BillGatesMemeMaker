@@ -14,10 +14,15 @@
   <title>Bill Gates Code Meme Maker</title>
 </head>
 <body>
-  <div class="loading" id="loadingScreen">
-    <img class="loading-bill" id="loadingBill" src="./images/Bill.png" alt="loader image">
+  <div id="loadingScreen">
+    <img class="loading-bill" id="loadingBill" src="./images/Bill.png">
   </div>
   <div class="wrapper">
+    <div id="download-popup">
+      <img src="" alt="">
+      <img src="./Icons/Delete.svg" onclick="closePopUp()" class="close-icon close-popup">
+      <button onclick="downloadCanvas()" class="button-class download-button" id="imageDownloadButton"><img src="./Icons/Download.svg"> Download</button>
+    </div>
     <div id="title">
       <h1>< Bill Gates Loves to Code /></h1>
       <span> <img src="./Icons/Twitter.svg"> Tweet your pics with <i>#loveToCode</i></span>

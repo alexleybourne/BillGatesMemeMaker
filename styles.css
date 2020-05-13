@@ -96,7 +96,7 @@ span a {
     transform: scale(0.4) translate(130px, -178px);
 }
 
-.loading {
+#loadingScreen {
     overflow: hidden;
     top: 0;
     left: 0;
@@ -296,6 +296,45 @@ button img {
 .text-3 {
     width: 180px;
     transform: translate(9px, 6px);
+}
+
+#download-popup {
+    z-index: 690;
+    position: absolute;
+    width: 90vw;
+    height: 80vh;
+    border: black 1px solid;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-icon {
+    height: 30px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    cursor: pointer;
+    filter: invert(1);
+    background: beige;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+}
+
+.close-icon:hover {
+    filter: invert(0);
+    background: none;
+    border-radius: 0px;
+}
+
+.download-button {
+    width: 90%;
+    position: absolute;
+    justify-content: center;
+    bottom: 20px;
+    transform: translate(-5px, 0px);
 }
 
 .puff-in-center {
