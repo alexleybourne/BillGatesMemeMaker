@@ -105,11 +105,9 @@ const closePopUp = () => {
 }
 
 const loadingAnimation = async() => {
-    const bill = document.getElementById('loadingBill').classList
-    bill.add('puff-in-center')
+    document.getElementById('loadingBill').classList.add('puff-in-center')
     await sleep(1000)
-    const screen = document.getElementById('loadingScreen').classList
-    screen.add('hidden')
+    document.getElementById('loadingScreen').classList.add('hidden')
 }
 
 const selected = (selection) => {
@@ -128,18 +126,20 @@ const uploadImage = async (e) => {
     draw()
 }
 
-const draw = () => {
-    // Start Loading Here (SHOW ELEMENT)
+const draw = async() => {
+    // Start Loading animation
+    document.getElementById('loadingUpdateWrapper').classList.add('visible')
     const canvas = document.getElementById('canvas'),
     ctx = canvas.getContext('2d')
-
     // Then draw all at once
     updateButtonVis()
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
     loadedImages.forEach((img, i) => img ? ctx.drawImage(img, positions[i][0], positions[i][1]) : null)
     ctx.drawImage(meme, 0, 0, canvas.width, canvas.height)
-    // Finish Loading Here (HIDE ELEMENT)
+    // Finish Loading
+    await sleep(300)
+    document.getElementById('loadingUpdateWrapper').classList.remove('visible')
 }
 
 const loadUploadImage = async (canvas, elementID) => {
@@ -158,7 +158,7 @@ const clearCanvas = async () => {
     ids.forEach(id => {
         document.getElementById(`upload-${id}`).value = null
     })
-    loadedImages.map(_ => null)
+    loadedImages = loadedImages.map(_ => null)
     draw()
     updateButtonVis()
 }
