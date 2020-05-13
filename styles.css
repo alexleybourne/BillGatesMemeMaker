@@ -3,7 +3,10 @@ html, body {
     max-width: 100%;
     overflow-x: hidden;
     font-family: Arial, Helvetica, sans-serif;
-    /* cursor:url(./images/Cursor.png), auto; */
+}
+
+body {
+    cursor:url('./images/Cursor.png'), auto
 }
 
 #canvas-items {

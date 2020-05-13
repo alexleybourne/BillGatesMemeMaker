@@ -1,6 +1,8 @@
+// WHAT ARE YOU DOING LOOKING IN HERE???
+
 const sleep = (time) => new Promise(r => setTimeout(r, time))
 
-var memeURL, memeName, background, meme, ids, canvas, ctx
+var memeURL, memeName, background, meme, ids, canvas, ctx, positions, loadedImages
 var helpVal = false
 const fileName = "Bill-Gates-Coding-Meme.jpg"
 
@@ -11,6 +13,12 @@ async function setup() {
     ids = ["main", "secondary", "binder"]
     canvas = document.getElementById('canvas'),
     ctx = canvas.getContext('2d')
+
+    positions = Array(ids.length).fill().map(_ => [0, 0])
+    loadedImages = Array(ids.length).fill()
+
+    background = await loadImage(backgroundURL)
+    meme = await loadImage(memeURL)
 
     ids.forEach(id => {
         document.getElementById(`upload-${id}`).addEventListener('change', uploadImage)
@@ -109,29 +117,29 @@ const selected = (selection) => {
     input.click()
 }
 
-const uploadImage = () => {
-    if(ids.map(id => document.getElementById(`upload-${id}`).value).every(el => !el)){
-        alert("No file selected")
-    } else {
-        draw()
+const uploadImage = async (e) => {
+    if(!e.target.value){
+        alert("No file selected") // Add windows error popup with old sound maybe
+        return
     }
+    let name = e.target.id.split('-')[1]
+    loadedImagesIndex = ids.findIndex(el => el === name)
+    loadedImages[loadedImagesIndex] = await loadUploadImage(canvas, name)
+    draw()
 }
 
-const draw = async () => {
+const draw = () => {
+    // Start Loading Here (SHOW ELEMENT)
     const canvas = document.getElementById('canvas'),
     ctx = canvas.getContext('2d')
-
-    // Load all images first
-    let background = await loadImage(backgroundURL)
-    let meme = await loadImage(memeURL)
-    const awaitingImgs = Promise.all(ids.map(id => loadUploadImage(canvas, id)))
 
     // Then draw all at once
     updateButtonVis()
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
-    await awaitingImgs.then(imgs => imgs.forEach(img => img ? ctx.drawImage(img, 0, 0) : null))
+    loadedImages.forEach((img, i) => img ? ctx.drawImage(img, positions[i][0], positions[i][1]) : null)
     ctx.drawImage(meme, 0, 0, canvas.width, canvas.height)
+    // Finish Loading Here (HIDE ELEMENT)
 }
 
 const loadUploadImage = async (canvas, elementID) => {
@@ -150,7 +158,8 @@ const clearCanvas = async () => {
     ids.forEach(id => {
         document.getElementById(`upload-${id}`).value = null
     })
-    await draw()
+    loadedImages.map(_ => null)
+    draw()
     updateButtonVis()
 }
 
@@ -191,4 +200,6 @@ const help = async() => {
         document.getElementById('bubble3').classList.remove('bubble-visible')
     }
 }
+
+// CREATED BY ALEX LEYBOURNE AND NICOLAS JENSEN 2020
 
