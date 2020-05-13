@@ -56,7 +56,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     loadingAnimation()
     let meme = await loadImage(memeURL)
     ctx.drawImage(meme, 0, 0, canvas.width, canvas.height)
-    // canvas.addEventListener('mousemove', (e) => console.log(e.offsetX, e.offsetY))
+    // Checks if browser is chrome and shows message
+    var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime)
+    if (isChrome) { document.getElementById('chromeWarning').classList.add('ChromeMessageHidden') }
 })
 
 const generate = () => {
