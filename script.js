@@ -70,7 +70,16 @@ const scaleCheck = () => {
     }
 }
 
-const openPopUp = () => {
+const openPopUp = async() => {
+    // Wink Animation
+    document.getElementById('wink').classList.add('visible')
+    document.getElementById('wink-text').classList.add('visible')
+    await sleep(200)
+    document.getElementById('wink').classList.remove('visible')
+    await sleep(100)
+    document.getElementById('wink-text').classList.remove('visible')
+    await sleep(100)
+    // Opens Popup
     document.getElementById('download-popup').classList.add('popup-visible')
 }
 
@@ -129,19 +138,14 @@ const loadUploadImage = async (canvas, elementID) => {
 }
 
 
-const  downloadCanvas = async () => {
+const  downloadCanvas = () => {
     const canvas = document.getElementById('canvas'),
     image = canvas.toDataURL('image/jpeg', 1.0),
     link = document.createElement('a')
     link.download = "ImageTest!.jpg"
     link.href = image
     link.click()
-    document.getElementById('wink').classList.add('visible')
-    document.getElementById('wink-text').classList.add('visible')
-    await sleep(200)
-    document.getElementById('wink').classList.remove('visible')
-    await sleep(100)
-    document.getElementById('wink-text').classList.remove('visible')
+    closePopUp()
 }
 
 const clearCanvas = async () => {
