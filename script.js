@@ -52,24 +52,12 @@ const getCorners = (pos) => {
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
-
     await setup()
-    scaleCheck()
     loadingAnimation()
     let meme = await loadImage(memeURL)
     ctx.drawImage(meme, 0, 0, canvas.width, canvas.height)
     // canvas.addEventListener('mousemove', (e) => console.log(e.offsetX, e.offsetY))
 })
-
-
-const scaleCheck = () => {
-     // remove download button on mobile
-    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-    if (vw < 700) { document.getElementById('imageDownloadButton').classList.add('hidden') } 
-    else {  document.getElementById('imageDownloadButton').classList.remove('hidden') }
-}
-
-window.addEventListener('resize', scaleCheck)
 
 const generate = () => {
     const canvas = document.getElementById('canvas'),

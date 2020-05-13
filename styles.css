@@ -339,7 +339,8 @@ button img {
 }
 
 #GeneratedImage {
-    max-width: 80%;
+    max-width: 90%;
+    max-height: 80%;
 }
 
 .close-icon:hover {
@@ -421,6 +422,12 @@ button img {
     #updateLoadingBill {
         width: 120px;
     }
+
+    #imageDownloadButton {
+        opacity: 0;
+        z-index: -10;
+        pointer-events: none;
+    }
 }
 
 @media only screen and (max-height: 700px) {
@@ -454,6 +461,12 @@ button img {
 
     #updateLoadingBill {
         width: 120px;
+    }
+
+    #imageDownloadButton {
+        opacity: 0;
+        z-index: -10;
+        pointer-events: none;
     }
 }
 
