@@ -18,7 +18,7 @@ function skewImage(c, img, corners) {
     {x: corners.bottomLeft[0], y: corners.bottomLeft[1]}
   ]
 
-  const step = 4
+  const step = 3
   
   var p1, p2, p3, p4, y1c, y2c, y1n, y2n,
       w = img.width - 1,         // -1 to give room for the "next" points
