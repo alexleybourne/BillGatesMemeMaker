@@ -46,6 +46,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     await setup()
     scaleCheck()
+    openPopUp()
     loadingAnimation()
     let meme = await loadImage(memeURL)
     ctx.drawImage(meme, 0, 0, canvas.width, canvas.height)
@@ -68,6 +69,14 @@ const scaleCheck = () => {
         document.getElementById('title').style.marginTop = '200px'
         document.getElementById('credits').style.marginBottom = '50px'
     }
+}
+
+const openPopUp = () => {
+    document.getElementById('download-popup').classList.add('popup-visible')
+}
+
+const closePopUp = () => {
+    document.getElementById('download-popup').classList.remove('popup-visible')
 }
 
 const loadingAnimation = async() => {
