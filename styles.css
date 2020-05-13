@@ -3,6 +3,7 @@ html, body {
     max-width: 100%;
     overflow-x: hidden;
     font-family: Arial, Helvetica, sans-serif;
+    /* cursor:url(./images/Cursor.png), auto; */
 }
 
 #canvas-items {
@@ -335,8 +336,7 @@ button img {
 }
 
 #GeneratedImage {
-    height: 80%;
-    max-width: 90%;
+    max-width: 80%;
 }
 
 .close-icon:hover {

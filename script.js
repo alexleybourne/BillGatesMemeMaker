@@ -110,8 +110,7 @@ const selected = (selection) => {
 }
 
 const uploadImage = () => {
-    uploads = ids.map(id => document.getElementById(`upload-${id}`))
-    if(uploads.includes(null) || uploads.some(el => !el.value)){
+    if(ids.map(id => document.getElementById(`upload-${id}`).value).every(el => !el)){
         alert("No file selected")
     } else {
         draw()
