@@ -19,9 +19,11 @@
   </div>
   <div class="wrapper">
     <div id="download-popup">
-      <img src="" alt="Bill Gates Meme Image" id="GeneratedImage">
-      <img src="./Icons/Delete.svg" onclick="closePopUp()" class="close-icon close-popup">
-      <button onclick="downloadCanvas()" class="button-class download-button" id="imageDownloadButton"><img src="./Icons/Download.svg"> Download</button>
+      <div class="download-wrapper">
+        <img src="" alt="Bill Gates Meme Image" id="GeneratedImage">
+        <img src="./Icons/Delete.svg" onclick="closePopUp()" id="closeIcon">
+        <button onclick="downloadCanvas()" class="button-class download-button" id="imageDownloadButton"><img src="./Icons/Download.svg"> Download</button>
+      </div>
     </div>
     <span id="loadingUpdateWrapper">
       <img id="updateLoadingBill" src="./images/Bill.png">
@@ -29,7 +31,7 @@
     </span>
     <div id="title">
       <h1>< Bill Gates Loves to Code /></h1>
-      <h3 id="chromeWarning">For the best results please use google chrome</h3>
+      <p id="chromeWarning">For the best results please use google chrome</p>
       <span> <img src="./Icons/Twitter.svg"> Tweet your pics with <i>#loveToCode</i></span>
       <p>Click the computer screen to get started !</p>
     </div>
