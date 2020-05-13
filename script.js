@@ -46,7 +46,6 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     await setup()
     scaleCheck()
-    openPopUp()
     loadingAnimation()
     let meme = await loadImage(memeURL)
     ctx.drawImage(meme, 0, 0, canvas.width, canvas.height)

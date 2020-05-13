@@ -207,7 +207,7 @@ span a {
     z-index: 69;
     opacity: 1!important;
     pointer-events: all!important;
-    transform: translateY(20px)!important;
+    transform: translateY(0px)!important;
 }
 
 button:focus {outline:0;}
@@ -318,7 +318,7 @@ button img {
     align-items: center;
     justify-content: center;
     transition-duration: 0.4s;
-    transform: translateY(0px);
+    transform: translateY(40px);
     pointer-events: none;
 }
 
